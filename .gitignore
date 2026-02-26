@@ -1,0 +1,26 @@
+# Common
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-*
+.DS_Store
+Thumbs.db
+.env
+
+# go_cli
+/vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# custom
+/developer/
+
+# binaries
+/gapwatch

@@ -1,0 +1,43 @@
+version: 2
+
+project_name: gapwatch
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: ./cmd/gapwatch
+    binary: gapwatch
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+      - goos: windows
+        format: zip
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+
+brews:
+  - repository:
+      owner: skinnybinder
+      name: homebrew-tap
+    homepage: "https://github.com/skinnybinder/gapwatch"
+    description: "Insert visual gap markers into streaming output"
+    license: "MIT"
+    install: |
+      bin.install "gapwatch"
