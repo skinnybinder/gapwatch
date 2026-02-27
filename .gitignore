@@ -21,6 +21,7 @@ Thumbs.db
 
 # custom
 /developer/
+govulncheck.out
 
 # binaries
 /gapwatch
